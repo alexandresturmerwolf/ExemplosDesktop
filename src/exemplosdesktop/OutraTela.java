@@ -46,14 +46,14 @@ public class OutraTela extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addComponent(btFechar)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(568, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(btFechar)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         pack();
