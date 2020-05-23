@@ -124,9 +124,16 @@ public class Login extends javax.swing.JDialog {
     }//GEN-LAST:event_btFecharActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        dispose();
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+
+        Database db = new Database();
+
+        if (db.isConnected()) {
+            if (db.validaUsuarioSenha(tfUsuario.getText(), pfSenha.getText())) {
+                dispose();
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btLoginActionPerformed
 
     /**

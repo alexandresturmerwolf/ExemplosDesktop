@@ -5,8 +5,7 @@
  */
 package exemplosdesktop;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 /**
  *
@@ -62,5 +61,27 @@ public class Database {
 
     public Connection getConexao() {
         return conexao;
+    }
+
+    public ResultSet executaQuery(String sql) {
+        ResultSet rs = null;
+        try {
+            Statement st = conexao.createStatement();
+            rs = st.executeQuery(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public boolean validaUsuarioSenha(String usuario, String senha) {
+        boolean resp = false;
+        try {
+            ResultSet rs = executaQuery("SELECT nome, senha FROM usuarios where nome='" + usuario + "' and senha = '" + senha + "'");
+            resp = rs.next();
+        } catch (Exception e) {
+        }
+
+        return resp;
     }
 }
