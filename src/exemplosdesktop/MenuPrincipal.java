@@ -27,84 +27,145 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
+        tbPrincipal = new javax.swing.JToolBar();
+        btClientes = new javax.swing.JButton();
+        paStatus = new javax.swing.JPanel();
+        lbSistema = new javax.swing.JLabel();
+        mbMenu = new javax.swing.JMenuBar();
+        mmCadastro = new javax.swing.JMenu();
+        miClientes = new javax.swing.JMenuItem();
+        mmFornecedores = new javax.swing.JMenu();
+        mmProdutos = new javax.swing.JMenu();
+        sp1 = new javax.swing.JPopupMenu.Separator();
+        mmTabelas = new javax.swing.JMenu();
+        miUnidade = new javax.swing.JMenuItem();
+        mmMovimentos = new javax.swing.JMenu();
+        mmNaoSei = new javax.swing.JMenu();
+        mmConfiguracoes = new javax.swing.JMenu();
+        mmSobre = new javax.swing.JMenu();
+        mmAutor = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Cadastro 1.0z");
 
-        jMenu1.setText("Cadastros");
+        tbPrincipal.setRollover(true);
 
-        jMenu6.setText("Clientes");
-        jMenu1.add(jMenu6);
-
-        jMenu7.setText("Fornecedores");
-        jMenu1.add(jMenu7);
-
-        jMenu8.setText("Produtos");
-        jMenu1.add(jMenu8);
-        jMenu1.add(jSeparator1);
-
-        jMenu9.setText("Tabelas");
-
-        jMenuItem1.setText("Unidade");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exemplosdesktop/imagens/Alien.png"))); // NOI18N
+        btClientes.setFocusable(false);
+        btClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btClientesActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem1);
+        tbPrincipal.add(btClientes);
 
-        jMenu1.add(jMenu9);
+        lbSistema.setText("Sistema gerencial de ativiades extraterrestres");
 
-        jMenuBar1.add(jMenu1);
+        javax.swing.GroupLayout paStatusLayout = new javax.swing.GroupLayout(paStatus);
+        paStatus.setLayout(paStatusLayout);
+        paStatusLayout.setHorizontalGroup(
+            paStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paStatusLayout.createSequentialGroup()
+                .addComponent(lbSistema)
+                .addGap(0, 544, Short.MAX_VALUE))
+        );
+        paStatusLayout.setVerticalGroup(
+            paStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paStatusLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbSistema))
+        );
 
-        jMenu2.setText("Movimentos");
+        mmCadastro.setText("Cadastros");
 
-        jMenu3.setText("jMenu3");
-        jMenu2.add(jMenu3);
+        miClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        miClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exemplosdesktop/imagens/Alien.png"))); // NOI18N
+        miClientes.setMnemonic('C');
+        miClientes.setText("Clientes");
+        miClientes.setToolTipText("Cadastra um ser alienígena");
+        miClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miClientesActionPerformed(evt);
+            }
+        });
+        mmCadastro.add(miClientes);
 
-        jMenuBar1.add(jMenu2);
+        mmFornecedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exemplosdesktop/imagens/Boss.png"))); // NOI18N
+        mmFornecedores.setMnemonic('F');
+        mmFornecedores.setText("Fornecedores");
+        mmCadastro.add(mmFornecedores);
 
-        jMenu4.setText("Configurações");
-        jMenuBar1.add(jMenu4);
+        mmProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exemplosdesktop/imagens/Radiation.png"))); // NOI18N
+        mmProdutos.setMnemonic('P');
+        mmProdutos.setText("Produtos");
+        mmCadastro.add(mmProdutos);
+        mmCadastro.add(sp1);
 
-        jMenu5.setText("Sobre");
+        mmTabelas.setMnemonic('T');
+        mmTabelas.setText("Tabelas");
 
-        jMenu10.setText("Autor");
-        jMenu5.add(jMenu10);
+        miUnidade.setText("Unidade");
+        miUnidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miUnidadeActionPerformed(evt);
+            }
+        });
+        mmTabelas.add(miUnidade);
 
-        jMenuBar1.add(jMenu5);
+        mmCadastro.add(mmTabelas);
 
-        setJMenuBar(jMenuBar1);
+        mbMenu.add(mmCadastro);
+
+        mmMovimentos.setText("Movimentos");
+
+        mmNaoSei.setText("jMenu3");
+        mmMovimentos.add(mmNaoSei);
+
+        mbMenu.add(mmMovimentos);
+
+        mmConfiguracoes.setText("Configurações");
+        mbMenu.add(mmConfiguracoes);
+
+        mmSobre.setText("Sobre");
+
+        mmAutor.setText("Autor");
+        mmSobre.add(mmAutor);
+
+        mbMenu.add(mmSobre);
+
+        setJMenuBar(mbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tbPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(paStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tbPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                .addComponent(paStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void miUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miUnidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_miUnidadeActionPerformed
+
+    private void btClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClientesActionPerformed
+        miClientesActionPerformed(evt);
+    }//GEN-LAST:event_btClientesActionPerformed
+
+    private void miClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClientesActionPerformed
+        System.out.println("A vaca morreu");
+    }//GEN-LAST:event_miClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,18 +204,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JButton btClientes;
+    private javax.swing.JLabel lbSistema;
+    private javax.swing.JMenuBar mbMenu;
+    private javax.swing.JMenuItem miClientes;
+    private javax.swing.JMenuItem miUnidade;
+    private javax.swing.JMenu mmAutor;
+    private javax.swing.JMenu mmCadastro;
+    private javax.swing.JMenu mmConfiguracoes;
+    private javax.swing.JMenu mmFornecedores;
+    private javax.swing.JMenu mmMovimentos;
+    private javax.swing.JMenu mmNaoSei;
+    private javax.swing.JMenu mmProdutos;
+    private javax.swing.JMenu mmSobre;
+    private javax.swing.JMenu mmTabelas;
+    private javax.swing.JPanel paStatus;
+    private javax.swing.JPopupMenu.Separator sp1;
+    private javax.swing.JToolBar tbPrincipal;
     // End of variables declaration//GEN-END:variables
 }
