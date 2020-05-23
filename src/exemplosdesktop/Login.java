@@ -5,6 +5,8 @@
  */
 package exemplosdesktop;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wolfi
@@ -60,8 +62,6 @@ public class Login extends javax.swing.JDialog {
                 btFecharActionPerformed(evt);
             }
         });
-
-        pfSenha.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,8 +132,13 @@ public class Login extends javax.swing.JDialog {
                 dispose();
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Banco de dados não funcional", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btLoginActionPerformed
 
     /**
@@ -153,13 +158,17 @@ public class Login extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
