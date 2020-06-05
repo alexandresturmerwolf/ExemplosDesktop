@@ -130,7 +130,7 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_btTrocaActionPerformed
 
     private void btMostraOutraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostraOutraActionPerformed
-        OutraTela outra = new OutraTela();
+        Cadastro outra = new Cadastro();
         outra.setVisible(true);
     }//GEN-LAST:event_btMostraOutraActionPerformed
 

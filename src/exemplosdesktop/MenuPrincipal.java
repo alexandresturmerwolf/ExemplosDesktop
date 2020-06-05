@@ -164,7 +164,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btClientesActionPerformed
 
     private void miClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClientesActionPerformed
-        System.out.println("A vaca morreu");
+        Cadastro cad = new Cadastro();
+        cad.setVisible(true);
     }//GEN-LAST:event_miClientesActionPerformed
 
     /**

@@ -40,19 +40,6 @@ public class Database {
             Class.forName(nomeDriver).newInstance();
             conexao = DriverManager.getConnection(localBancoDados, usuario, senha);
 
-            /*
-            if (conexao != null) {
-                Statement st = conexao.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM usuarios");
-
-                while (rs.next()) {
-                    System.out.println(rs.getString("codigo") + "   " + rs.getString("nome"));
-                }
-
-            } else {
-                System.out.println("Problemas na conexão com o banco de dados!");
-            }
-             */
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,6 +48,17 @@ public class Database {
 
     public Connection getConexao() {
         return conexao;
+    }
+
+    public boolean executaSQL(String sql) {
+        boolean resp = false;
+        try {
+            Statement st = conexao.createStatement();
+            resp = st.execute(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resp;
     }
 
     public ResultSet executaQuery(String sql) {
