@@ -10,12 +10,14 @@ package exemplosdesktop;
  * @author wolfi
  */
 import java.sql.*;
+
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Cadastro extends javax.swing.JFrame {
 
-    private Database db;
+    private Database db = null;
 
     public Cadastro() {
         initComponents();
@@ -102,7 +104,7 @@ public class Cadastro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btRecarregar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(apDados, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+                    .addComponent(apDados, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btFechar)))
@@ -112,7 +114,7 @@ public class Cadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(apDados, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addComponent(apDados, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAlterar)
@@ -136,6 +138,7 @@ public class Cadastro extends javax.swing.JFrame {
             ResultSet rs = db.executaQuery("SELECT id, nome, tipo, altura, cor FROM alienigenas");
 
             Vector cabecalho = new Vector();
+
             cabecalho.add("ID");
             cabecalho.add("Nome");
             cabecalho.add("Tipo");
@@ -154,8 +157,8 @@ public class Cadastro extends javax.swing.JFrame {
                 linhas.add(new Vector(colunas));
             }
 
-            tbDados.setModel(new DefaultTableModel(linhas, cabecalho));
-
+            tbDados.setModel(new DefaultTableModel(linhas, cabecalho));         
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -190,15 +193,21 @@ public class Cadastro extends javax.swing.JFrame {
         if (id > -1) {
             db.executaSQL("DELETE FROM alienigenas WHERE id='" + id + "'");
             btRecarregarActionPerformed(null);
+        } else {
+            JOptionPane.showMessageDialog(this, "ID Inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
 
         CadastroManutencao man = new CadastroManutencao(this, true);
-        man.setVisible(true);
+        man.setVisible(true); 
+        
+        // não identifica se deu ok ou cancelar...
 
         try {
+            // ao inves de usar man.xxxx, deveria pegar os dados da entidade
+            
             db.executaSQL("INSERT INTO alienigenas(nome, tipo, altura, cor) VALUES ('"
                     + man.nome + "','" // pegar o conteudo
                     + man.tipo + "', '" // direto - variavel publica
@@ -222,6 +231,8 @@ public class Cadastro extends javax.swing.JFrame {
             try {
                 ResultSet rs = db.executaQuery("SELECT id, nome, tipo, altura, cor FROM alienigenas WHERE id = '" + id + "'");
                 if (rs.next()) {
+                    
+                    // usar a instancia da entidade
                     man.preencheValores(
                             rs.getString("nome"),
                             rs.getString("tipo"),
@@ -235,8 +246,12 @@ public class Cadastro extends javax.swing.JFrame {
 
             man.setVisible(true);
 
+            
+            // verificar se foi ok ou cancelar
+            
             try {
 
+                // deveria ter usado a entidade ao inves do man.xxx
                 db.executaSQL("UPDATE alienigenas SET "
                         + "nome = '" + man.nome + "', "
                         + "tipo = '" + man.tipo + "', "

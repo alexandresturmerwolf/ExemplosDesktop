@@ -10,21 +10,13 @@ package exemplosdesktop.entidades;
  * @author wolfi
  */
 public class Alienigenas {
+
     private int id;
     private String nome;
     private int tipo;
     private int altura;
-    private String cor;       
+    private String cor;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    
     public Alienigenas(int id, String nome, int tipo, int altura, String cor) {
         this.id = id;
         this.nome = nome;
@@ -32,12 +24,13 @@ public class Alienigenas {
         this.altura = altura;
         this.cor = cor;
     }
-    
-    public Alienigenas(String nome, int tipo, int altura, String cor) {
-        this.nome = nome;
-        this.tipo = tipo;
-        this.altura = altura;
-        this.cor = cor;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -71,4 +64,5 @@ public class Alienigenas {
     public void setCor(String cor) {
         this.cor = cor;
     }
+
 }

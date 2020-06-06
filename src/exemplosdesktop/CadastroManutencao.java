@@ -96,13 +96,13 @@ public class CadastroManutencao extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbAltura)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)))))
+                                .addComponent(tfAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNome)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,8 +119,7 @@ public class CadastroManutencao extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btOk)
-                    .addComponent(btCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btCancelar)))
         );
 
         pack();
@@ -130,6 +129,7 @@ public class CadastroManutencao extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    // programacao boba
     private void setValores() {
         nome = tfNome.getText();
         tipo = tfTipo.getText();
@@ -137,6 +137,8 @@ public class CadastroManutencao extends javax.swing.JDialog {
         cor = tfCor.getText();
     }
 
+    
+    // programacao boba
     public void preencheValores(String nome, String tipo, String altura, String cor) {
         tfNome.setText(nome);
         tfTipo.setText(tipo);

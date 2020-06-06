@@ -37,7 +37,7 @@
                       <Component id="btRecarregar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="apDados" pref="926" max="32767" attributes="0"/>
+                  <Component id="apDados" pref="661" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btFechar" min="-2" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="apDados" pref="303" max="32767" attributes="0"/>
+              <Component id="apDados" pref="211" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
