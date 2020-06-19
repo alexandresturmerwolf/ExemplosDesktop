@@ -5,16 +5,15 @@
  */
 package exemplosdesktop;
 
+import exemplosdesktop.entidades.Alienigenas;
+
 /**
  *
  * @author wolfi
  */
 public class CadastroManutencao extends javax.swing.JDialog {
 
-    public String nome;
-    public String tipo;
-    public String altura;
-    public String cor;
+    public Alienigenas ali = null;
 
     public CadastroManutencao(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -61,14 +60,9 @@ public class CadastroManutencao extends javax.swing.JDialog {
             }
         });
 
-        tfTipo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        tfTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTipoActionPerformed(evt);
-            }
-        });
+        tfTipo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        tfAltura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        tfAltura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,32 +124,42 @@ public class CadastroManutencao extends javax.swing.JDialog {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     // programacao boba
-    private void setValores() {
-        nome = tfNome.getText();
-        tipo = tfTipo.getText();
-        altura = tfAltura.getText();
-        cor = tfCor.getText();
+    private boolean setValores() {
+        boolean ok = true;
+        try {
+            ali.setNome(tfNome.getText());
+            ali.setTipo(Integer.parseInt(tfTipo.getText()));
+            ali.setAltura(Integer.parseInt(tfAltura.getText()));
+            ali.setCor(tfCor.getText());
+        } catch (Exception e) {
+            ok = false;
+            e.printStackTrace();
+        }
+        return ok;
     }
 
-    
     // programacao boba
-    public void preencheValores(String nome, String tipo, String altura, String cor) {
-        tfNome.setText(nome);
-        tfTipo.setText(tipo);
-        tfAltura.setText(altura);
-        tfCor.setText(cor);
+    public void preencheValores() {
+        tfNome.setText(ali.getNome());
+        tfTipo.setText(""+ali.getTipo());
+        tfAltura.setText(""+ali.getAltura());
+        tfCor.setText(ali.getCor());
+    }
+
+    public void setEntity(Alienigenas ali) {
+        this.ali = ali;
     }
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
-
         setValores();
-
+        if(ali.getId() == 0) { // inserção
+            ali.insere();
+        } else { //alteração
+            ali.altera();
+        }
+        
         dispose();
     }//GEN-LAST:event_btOkActionPerformed
-
-    private void tfTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTipoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,7 @@ package exemplosdesktop;
  *
  * @author wolfi
  */
+import exemplosdesktop.entidades.Alienigenas;
 import java.sql.*;
 
 import java.util.Vector;
@@ -18,10 +19,12 @@ import javax.swing.table.DefaultTableModel;
 public class Cadastro extends javax.swing.JFrame {
 
     private Database db = null;
+    private Alienigenas ali = null;
 
     public Cadastro() {
         initComponents();
         db = new Database();
+        ali = new Alienigenas(db);
         btRecarregarActionPerformed(null);
     }
 
@@ -157,8 +160,8 @@ public class Cadastro extends javax.swing.JFrame {
                 linhas.add(new Vector(colunas));
             }
 
-            tbDados.setModel(new DefaultTableModel(linhas, cabecalho));         
-            
+            tbDados.setModel(new DefaultTableModel(linhas, cabecalho));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -191,8 +194,10 @@ public class Cadastro extends javax.swing.JFrame {
         int id = getID();
 
         if (id > -1) {
-            db.executaSQL("DELETE FROM alienigenas WHERE id='" + id + "'");
-            btRecarregarActionPerformed(null);
+            if (JOptionPane.showConfirmDialog(this, "Confirma Exclusão", "Confirmar", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+                ali.exclui(id);
+                btRecarregarActionPerformed(null);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "ID Inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -201,22 +206,8 @@ public class Cadastro extends javax.swing.JFrame {
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
 
         CadastroManutencao man = new CadastroManutencao(this, true);
-        man.setVisible(true); 
-        
-        // não identifica se deu ok ou cancelar...
-
-        try {
-            // ao inves de usar man.xxxx, deveria pegar os dados da entidade
-            
-            db.executaSQL("INSERT INTO alienigenas(nome, tipo, altura, cor) VALUES ('"
-                    + man.nome + "','" // pegar o conteudo
-                    + man.tipo + "', '" // direto - variavel publica
-                    + man.altura + "', '" // não é uma boa prática
-                    + man.cor
-                    + "')");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        man.setEntity(ali);
+        man.setVisible(true);
 
         btRecarregarActionPerformed(null);
 
@@ -227,42 +218,25 @@ public class Cadastro extends javax.swing.JFrame {
 
         if (id > -1) {
             CadastroManutencao man = new CadastroManutencao(this, true);
+            man.setEntity(ali);
 
             try {
                 ResultSet rs = db.executaQuery("SELECT id, nome, tipo, altura, cor FROM alienigenas WHERE id = '" + id + "'");
                 if (rs.next()) {
+
+                    ali.setId(id);
+                    ali.setNome(rs.getString("nome"));
+                    ali.setTipo(Integer.parseInt(rs.getString("tipo")));
+                    ali.setAltura(Integer.parseInt(rs.getString("altura")));
+                    ali.setCor(rs.getString("cor"));
                     
-                    // usar a instancia da entidade
-                    man.preencheValores(
-                            rs.getString("nome"),
-                            rs.getString("tipo"),
-                            rs.getString("altura"),
-                            rs.getString("cor")
-                    );
+                    man.preencheValores();
+                    
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            man.setVisible(true);
-
-            
-            // verificar se foi ok ou cancelar
-            
-            try {
-
-                // deveria ter usado a entidade ao inves do man.xxx
-                db.executaSQL("UPDATE alienigenas SET "
-                        + "nome = '" + man.nome + "', "
-                        + "tipo = '" + man.tipo + "', "
-                        + "altura = '" + man.altura + "', "
-                        + "cor = '" + man.cor + "' "
-                        + "WHERE id = '" + id + "'"
-                );
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            man.setVisible(true);          
         }
 
         btRecarregarActionPerformed(null);

@@ -40,7 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mmTabelas = new javax.swing.JMenu();
         miUnidade = new javax.swing.JMenuItem();
         mmMovimentos = new javax.swing.JMenu();
-        mmNaoSei = new javax.swing.JMenu();
+        miTelaMovimenta = new javax.swing.JMenuItem();
         mmConfiguracoes = new javax.swing.JMenu();
         mmSobre = new javax.swing.JMenu();
         mmAutor = new javax.swing.JMenu();
@@ -120,8 +120,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mmMovimentos.setText("Movimentos");
 
-        mmNaoSei.setText("jMenu3");
-        mmMovimentos.add(mmNaoSei);
+        miTelaMovimenta.setText("jMenuItem1");
+        miTelaMovimenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTelaMovimentaActionPerformed(evt);
+            }
+        });
+        mmMovimentos.add(miTelaMovimenta);
 
         mbMenu.add(mmMovimentos);
 
@@ -170,6 +175,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_miClientesActionPerformed
 
+    private void miTelaMovimentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTelaMovimentaActionPerformed
+        TelaMovimenta tela = new TelaMovimenta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_miTelaMovimentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,13 +221,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbSistema;
     private javax.swing.JMenuBar mbMenu;
     private javax.swing.JMenuItem miClientes;
+    private javax.swing.JMenuItem miTelaMovimenta;
     private javax.swing.JMenuItem miUnidade;
     private javax.swing.JMenu mmAutor;
     private javax.swing.JMenu mmCadastro;
     private javax.swing.JMenu mmConfiguracoes;
     private javax.swing.JMenu mmFornecedores;
     private javax.swing.JMenu mmMovimentos;
-    private javax.swing.JMenu mmNaoSei;
     private javax.swing.JMenu mmProdutos;
     private javax.swing.JMenu mmSobre;
     private javax.swing.JMenu mmTabelas;

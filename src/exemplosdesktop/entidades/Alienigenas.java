@@ -5,11 +5,15 @@
  */
 package exemplosdesktop.entidades;
 
+import exemplosdesktop.Database;
+
 /**
  *
  * @author wolfi
  */
 public class Alienigenas {
+
+    private Database db = null;
 
     private int id;
     private String nome;
@@ -17,12 +21,8 @@ public class Alienigenas {
     private int altura;
     private String cor;
 
-    public Alienigenas(int id, String nome, int tipo, int altura, String cor) {
-        this.id = id;
-        this.nome = nome;
-        this.tipo = tipo;
-        this.altura = altura;
-        this.cor = cor;
+    public Alienigenas(Database db) {
+        this.db = db;
     }
 
     public int getId() {
@@ -63,6 +63,48 @@ public class Alienigenas {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public boolean insere() {
+        boolean ok = false;
+        try {
+            db.executaSQL("INSERT INTO alienigenas(nome, tipo, altura, cor) VALUES('" + nome + "', '" + tipo + "', '" + altura + "', '" + cor + "')");
+            ok = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ok;
+    }
+
+    public boolean exclui(int id) {
+        boolean ok = false;
+
+        try {
+            db.executaSQL("DELETE FROM alienigenas WHERE id='" + id + "'");
+            ok = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ok;
+    }
+
+    public boolean altera() {
+        boolean ok = false;
+        try {
+            db.executaSQL("UPDATE alienigenas SET "
+                    + "nome = '" + nome + "', "
+                    + "tipo = '" + tipo + "', "
+                    + "altura = '" + altura + "', "
+                    + "cor = '" + cor + "' "
+                    + "WHERE id = '" + id + "'"
+            );
+            ok = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ok;
     }
 
 }

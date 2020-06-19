@@ -68,11 +68,14 @@
             <Property name="text" type="java.lang.String" value="Movimentos"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="mmNaoSei">
+            <MenuItem class="javax.swing.JMenuItem" name="miTelaMovimenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu3"/>
+                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miTelaMovimentaActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mmConfiguracoes">
