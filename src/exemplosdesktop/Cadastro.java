@@ -9,6 +9,7 @@ package exemplosdesktop;
  *
  * @author wolfi
  */
+import componetes.messages.Mess;
 import exemplosdesktop.entidades.Alienigenas;
 import java.sql.*;
 
@@ -194,12 +195,12 @@ public class Cadastro extends javax.swing.JFrame {
         int id = getID();
 
         if (id > -1) {
-            if (JOptionPane.showConfirmDialog(this, "Confirma Exclusão", "Confirmar", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+            if (Mess.confirma("Deseja excluir este item")) {
                 ali.exclui(id);
                 btRecarregarActionPerformed(null);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "ID Inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            Mess.error("ID inválido");
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
